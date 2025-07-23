@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: crypto-recommendation
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: crypto-recommendation
+  template:
+    metadata:
+      labels:
+        app: crypto-recommendation
+    spec:
+      containers:
+        - name: crypto-recommendation
+          image: crypto-recommendation:latest  # Local image tag (built manually)
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8080
